@@ -1,11 +1,13 @@
 package com.example.springbootcommpent.common;
 
+import java.io.Serializable;
+
 /**
  * 返回实体类
  * @author zhouliangze
  * @data 2019/7/3 15:13
  */
-public class BaseResult {
+public class BaseResult<T> implements Serializable {
     /**
      * 成功标识
      */
@@ -20,10 +22,11 @@ public class BaseResult {
      * 异常标识
      */
     public static final int EXCEPTION = 9;
+    private static final long serialVersionUID = -4678768584239931997L;
 
     private int code;
     private String msg;
-    private Object data;
+    private T data;
 
     public BaseResult() {
         this.code = SUCCESS;
@@ -79,11 +82,11 @@ public class BaseResult {
         this.msg = msg;
     }
 
-    public Object getData() {
+    public T getData() {
         return data;
     }
 
-    public void setData(Object data) {
+    public void setData(T data) {
         this.data = data;
     }
 }
