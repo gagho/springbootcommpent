@@ -74,7 +74,7 @@ public class WxService {
      * @param code 微信登录时提供的code
      * @return
      */
-    public BaseResult<Map> getOpenIDandSessionKey(String code){
+    public BaseResult<Map> getOpenIdAndSessionKey(String code){
         BaseResult<Map> baseResult = new BaseResult();
         String url = "https://api.weixin.qq.com/sns/jscode2session?appid=APPID&secret=SECRET&js_code=JSCODE&grant_type=authorization_code";
         url = url.replace("APPID", appid).replace("SECRET", secret).replace("JSCODE", code);
