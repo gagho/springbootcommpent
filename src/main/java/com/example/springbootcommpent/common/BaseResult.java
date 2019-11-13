@@ -42,7 +42,7 @@ public class BaseResult<T> implements Serializable {
      * 判断返回是否成功
      * @return
      */
-    private boolean isSuccess(){
+    public boolean isSuccess(){
         return this.code == SUCCESS;
     }
 
