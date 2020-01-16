@@ -23,7 +23,7 @@ public class CheckController {
     private CheckService checkService;
 
     @RequestMapping("test")
-    @Check({"name not null:姓名不能为空", "age>3"})
+    @Check({"TestCheck.name not null:姓名不能为空", "age>3"})
     public BaseResult testCheck(@RequestBody TestCheck testCheck, HttpServletRequest request){
         return checkService.testCheck(testCheck);
     }

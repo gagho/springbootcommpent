@@ -69,8 +69,17 @@ public class ParamCheckAspect {
                 if(vo == null){
                     msg = "未传入参数";
                 }else {
+                    String [] voClazzName = vo.getClass().getName().split("\\.");
+                    String voName = voClazzName[voClazzName.length-1];
                     for(String field : fields){
                         FileInfo fileInfo = resolveField(field, methodInfo);
+                        String fileStr = fileInfo.field;
+                        if(fileStr.split("\\.").length == 2){
+                            if(!fileStr.split("\\.")[0].equals(voName)){
+                                continue;
+                            }
+                            fileInfo.field = fileStr.split("\\.")[1];
+                        }
                         Object value = null;
                         try {
                             value = ReflectionUtil.invokeGetter(vo, fileInfo.field);
